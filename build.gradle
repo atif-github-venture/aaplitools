@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+}
+
+group 'com.lbrands.etaf'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+ext.baseUrl = 'https://artifactory.lbidts.com/artifactory/libs-release'
+
+repositories {
+        mavenCentral()
+//    maven {
+//        url baseUrl
+//    }
+//    mavenLocal()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+//    testCompile group: 'com.applitools', name: 'eyes-images-java3', version: '3.143.0'
+    testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+    testCompile  group: 'com.applitools', name: 'eyes-selenium-java3',version: '3.141.0'
+    testCompile group: 'org.yaml', name: 'snakeyaml', version: '1.23'
+
+}
+
+test {
+    useTestNG(){
+        suites("src/test/resources/testng.xml")
+        setParallel "methods"
+        setThreadCount 1
+    }
+    //makes the standard streams (err and out) visible at console when running web.scenarios
+    testLogging.showStandardStreams = true
+
+    // listen to events in the test execution lifecycle
+    beforeTest { descriptor ->
+        logger.lifecycle(">>> Running test: " + descriptor)
+
+    }
+    // set a system property for the test JVM(s)
+    systemProperties System.properties
+
+    // set heap size for the test JVM(s)
+    minHeapSize = "128m"
+    maxHeapSize = "512m"
+
+    // set JVM arguments for the test JVM(s)
+    jvmArgs '-XX:MaxPermSize=256m'
+}
+
+
+jar {
+    baseName = 'viusal_etaf_applitools'
+}
