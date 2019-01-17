@@ -12,9 +12,9 @@ public class Common {
         return url + "&device=" + device.toLowerCase() + "&brand=" + brand.toLowerCase();
     }
     public String[] readUrl(int index) throws NullPointerException {
-        String testName = null;
         LinkedHashMap<List, HashMap> linkedHashMap = (LinkedHashMap<List, HashMap>) hashMapHelper.getMap().get("visualUrl");
-        //TODO add a way to send back FATE number key as test name
+       List keys =  Arrays.asList(linkedHashMap.keySet().toArray());
+        String testName = keys.get(index).toString();
         List abc = Arrays.asList(linkedHashMap.values().toArray());
         String url = ((LinkedHashMap) abc.get(index)).get("url").toString();
         String brand = ((LinkedHashMap) abc.get(index)).get("brand").toString();
