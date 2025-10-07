@@ -43,7 +43,7 @@ public class DriverBase {
 		mobileCaps(browser,version,methodName,os);
 		//desktopCaps(browser, version, os, methodName);
 		webDriver.set(new RemoteWebDriver(
-				new URL("https://fatebamboo:9099ed6e-b6ab-42d0-a2d1-76fe26985c74@ondemand.saucelabs.com:443/wd/hub"),
+				new URL("https://user:key@ondemand.saucelabs.com:443/wd/hub"),
 				capabilities));
 		String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
 		sessionId.set(id);
