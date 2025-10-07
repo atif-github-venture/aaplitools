@@ -20,7 +20,6 @@ public class VisualTest extends DriverBase {
 		this.createDriver(browser, version, os, method.getName());
 		WebDriver driver = this.getWebDriver();
 		AppliTools appliTools = new AppliTools();
-//        appliTools.runAppliTest(driver, common.readUrl("FATE-24972"), "FATE-24972"); //to read for specific FATE
 		for (int i = 0; i < readUrlFileSize(); i++) {
 			String[] details = common.readUrl(i);
 			//appliTools.runAppliTest(driver, details[0], "Product mobile visual tests");
