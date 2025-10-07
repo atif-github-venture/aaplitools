@@ -1,4 +1,4 @@
-DP-5547:
-  brand: vs
+AP-5547:
+  brand: brand
   device: mobile
-  url: '#?path=templates%2Fproduct&variant=templates%2Fproduct%2Fmocks%2Ffull-product-page.json'
+  url: 'url'
